@@ -43,17 +43,6 @@ void incrementString(char *string) {
             carry = 0;
         }
     }
-
-    if (carry == 1) {
-        // Desbordamiento
-        int newSize = length + 2;
-        char newString[newSize];
-        newString[0] = alphabet[0];
-        strncpy(newString + 1, string, length + 1);
-        newString[newSize - 1] = '\0';
-        printf("Overflow occurred! New string: %s\n", newString);
-        strcpy(string, newString);
-    }
 }
 
 int main() {
@@ -61,11 +50,6 @@ int main() {
     printf("Current: %s\n", input);
     incrementString(input);
     printf("Next: %s\n", input);
-
-    char input2[] = "AA";
-    printf("Current: %s\n", input2);
-    incrementString(input2);
-    printf("Next: %s\n", input2);
 
     return 0;
 }
