@@ -1,55 +1,51 @@
 #include <stdio.h>
 #include <string.h>
 
-char alphabet[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-int alphabetSize = sizeof(alphabet) / sizeof(alphabet[0]);
+char alfabeto[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_";
+int base = sizeof(alfabeto) / sizeof(alfabeto[0]);
+    char num1[]="000";
+    char num2[]="001";
 
-int getIndex(char character) {
-    for (int i = 0; i < alphabetSize; i++) {
-        if (alphabet[i] == character) {
+int sumar(char numero1, char numero2, int acarreo);
+
+int obtenerPosicion(char numeroCaracter);
+
+int main() {
+    int _cantidadDeDigitos=7;
+    char resultado[]="0000000";
+    puts("Holas");
+    int acarreo=0;
+    for (int i = _cantidadDeDigitos-1; i >=0 ; --i)
+    {
+        int pos=i;
+        int suma_numero=sumar(num1[pos],num2[pos],acarreo);
+//        printf("probando Nº %d",pos);puts("");
+        if(suma_numero<base)resultado[pos];
+        else{
+            acarreo=1;
+            int _res=suma_numero%base;
+            resultado[pos]=alfabeto[_res];
+        }
+        printf("iteracion numero : %d \n",i);
+    }
+    
+    printf("base -> %d\n",base);
+    printf("resultado -> %s\n",resultado);
+    puts("FIN");
+    return 0;
+}
+
+int sumar(char numero1, char numero2, int acarreo) {
+    int pos1=obtenerPosicion(numero1);
+    int pos2=obtenerPosicion(numero2);
+    int _suma=pos1+pos2+acarreo;
+    return _suma;
+}
+
+int obtenerPosicion(char numeroCaracter) {
+    for (int i = 0; i < base; ++i) {
+        if (alfabeto[i] == numeroCaracter) {
             return i;
         }
     }
-    return -1;  // Carácter no encontrado en el alfabeto
-}
-
-char getNextCharacter(char character) {
-    int currentIndex = getIndex(character);
-    if (currentIndex == -1) {
-        return character;  // Carácter no encontrado, no se puede incrementar
-    }
-
-    int nextIndex = (currentIndex + 1) % alphabetSize;
-    return alphabet[nextIndex];
-}
-
-void incrementString(char *string) {
-    int length = strlen(string);
-    int carry = 1;
-
-    for (int i = length - 1; i >= 0; i--) {
-        if (carry == 0) {
-            break;
-        }
-
-        char current = string[i];
-        char next = getNextCharacter(current);
-
-        // Actualizar el carácter actual
-        string[i] = next;
-
-        // Si el carácter actual no cambió, es un desbordamiento
-        if (next != current) {
-            carry = 0;
-        }
-    }
-}
-
-int main() {
-    char input[] = "ASaDqEz";
-    printf("Current: %s\n", input);
-    incrementString(input);
-    printf("Next: %s\n", input);
-
-    return 0;
 }
