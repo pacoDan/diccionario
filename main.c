@@ -48,4 +48,6 @@ int obtenerPosicion(char numeroCaracter) {
             return i;
         }
     }
+    perror("obtenerPosicion()");
+    return -1; // hara que haya errores, pero de alguna forma debo manejar ese error
 }
