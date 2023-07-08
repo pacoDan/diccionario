@@ -80,3 +80,8 @@ dkms.conf
 program
 main.o
 output
+main
+.vscode/
+.cproject
+.project
+.settings
