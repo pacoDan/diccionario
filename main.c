@@ -11,8 +11,8 @@ int sumar(char numero1, char numero2, int acarreo);
 int obtenerPosicion(char numeroCaracter);
 
 int main() {
-    int _cantidadDeDigitos=7;
-    char resultado[]="0000000";
+    int _cantidadDeDigitos=3;
+    char resultado[]="000";
     puts("Holas");
     int acarreo=0;
     for (int i = _cantidadDeDigitos-1; i >=0 ; --i)
@@ -20,7 +20,7 @@ int main() {
         int pos=i;
         int suma_numero=sumar(num1[pos],num2[pos],acarreo);
 //        printf("probando Nº %d",pos);puts("");
-        if(suma_numero<base)resultado[pos];
+        if(suma_numero<base)resultado[pos]=alfabeto[suma_numero];
         else{
             acarreo=1;
             int _res=suma_numero%base;
