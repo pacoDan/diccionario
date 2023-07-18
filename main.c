@@ -13,7 +13,7 @@ int obtenerPosicion(char numeroCaracter);
 int main() {
     int _cantidadDeDigitos=3;
     char resultado[]="000";
-    puts("Holas");
+    puts("Holas____---");
     int acarreo=0;
     for (int i = _cantidadDeDigitos-1; i >=0 ; --i)
     {

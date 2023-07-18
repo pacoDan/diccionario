@@ -1,9 +1,9 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
 
-all: program
+all: diccionario
 
-program: main.o
+diccionario: main.o
 	$(CC) $(CFLAGS) -o $@ $<
 
 main.o: main.c
